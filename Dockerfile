@@ -9,7 +9,11 @@ RUN echo 2.0 > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
 
 # Add docker tools, need to be root to do so
 USER root
-RUN apk add --update docker python py-pip \
+
+# We need a more recent docker, jenkins:lts-alpine is currently pegged to Alpine 3.5, so pull docker from 3.6
+RUN echo "@v3.6 http://dl-cdn.alpinelinux.org/alpine/v3.6/community" >> /etc/apk/repositories
+
+RUN apk add --update docker@v3.6 python py-pip \
     && pip install docker-compose \
     && apk --purge -v del py-pip \
     && rm -rf /var/cache/apk/*
