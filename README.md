@@ -8,7 +8,7 @@
 >
 > Consider carefully where you run this and what other mitigating controls you put in place, certainly, this has no place in a production environment. If you don't understand this warning you shouldn't run this image!
 
-Jenkins with the Docker tools, blueocean and other useful plugins, rancher-compose, all installed by default.
+Jenkins with the Docker tools, blueocean and other useful plugins, rancher CLI, all installed by default.
 
 Built on top of jenkins:alpine-lts. Full plugin list is in plugins.txt
 
