@@ -10,10 +10,8 @@ RUN echo 2.0 > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
 # Installing packages, need to be root to do so
 USER root
 
-# We need a more recent docker, jenkins:lts-alpine is currently pegged to Alpine 3.5, so pull docker from 3.6
-# We also need ssl support for wget
-RUN echo "@v3.6 http://dl-cdn.alpinelinux.org/alpine/v3.6/community" >> /etc/apk/repositories
-ENV PACKAGES "ca-certificates docker@v3.6 make openssl python py-pip"
+# We need docker tools, make and ssl support for wget
+ENV PACKAGES "ca-certificates docker make openssl python py-pip"
 RUN apk add --update $PACKAGES \
     && pip install docker-compose \
     && apk --purge -v del py-pip \

@@ -1,6 +1,6 @@
 # jenkins
 
-[![Docker Automated buil](https://img.shields.io/docker/build/countingup/jenkins.svg)](https://hub.docker.com/r/countingup/jenkins/builds/)
+[![Docker Automated build](https://img.shields.io/docker/build/countingup/jenkins.svg)](https://hub.docker.com/r/countingup/jenkins/builds/)
 
 > WARNING
 >
