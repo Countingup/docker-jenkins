@@ -18,7 +18,7 @@ RUN apk add --update $PACKAGES \
     && rm -rf /var/cache/apk/*
 
 # Download and install Rancher CLI
-ENV RANCHER_CLI_VERSION 0.6.4
+ENV RANCHER_CLI_VERSION 0.6.7
 # The rancher tar.gz includes permissions data for the "current" folder, so don't extract to the root of /tmp since it will change the permissions :-(
 RUN mkdir /tmp/rancher \
   && wget -qO- https://github.com/rancher/cli/releases/download/v${RANCHER_CLI_VERSION}/rancher-linux-amd64-v${RANCHER_CLI_VERSION}.tar.gz \
