@@ -10,7 +10,7 @@
 
 Jenkins with the Docker tools, blueocean and other useful plugins, rancher CLI, all installed by default.
 
-Built on top of jenkins:alpine-lts. Full plugin list is in plugins.txt
+Built on top of jenkins/jenkins:lts-alpine. Full plugin list is in plugins.txt
 
 ## Build locally
 
