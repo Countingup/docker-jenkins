@@ -16,4 +16,4 @@ if [ -e /var/run/docker.sock ]; then
 fi
 
 # Switch back to Jenkins user and handoff to typical Jenkins entrypoint with all paramters
-exec su jenkins -c "/bin/tini -- /usr/local/bin/jenkins.sh $@"
+exec su jenkins -c "/sbin/tini -- /usr/local/bin/jenkins.sh $@"
