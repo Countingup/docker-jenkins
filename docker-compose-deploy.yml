@@ -3,6 +3,11 @@ volumes:
   jenkins_home:
     external: true
     driver: rancher-ebs
+    driver_opts:
+      size: 20
+      volumeType: gp2
+      ec2_az: eu-west-2b
+      tags: "Key=RancherAccess,Value=true"
 services:
   jenkins:
     image: countingup/jenkins:latest
