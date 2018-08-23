@@ -18,7 +18,7 @@ RUN apk add --update $PACKAGES \
     && rm -rf /var/cache/apk/*
 
 # Download and install Rancher CLI
-ENV RANCHER_CLI_VERSION 0.6.7
+ENV RANCHER_CLI_VERSION 0.6.11
 # The rancher tar.gz includes permissions data for the "current" folder, so don't extract to the root of /tmp since it will change the permissions :-(
 RUN mkdir /tmp/rancher \
   && wget -qO- https://github.com/rancher/cli/releases/download/v${RANCHER_CLI_VERSION}/rancher-linux-amd64-v${RANCHER_CLI_VERSION}.tar.gz \
@@ -26,6 +26,16 @@ RUN mkdir /tmp/rancher \
   && mv /tmp/rancher/rancher-v${RANCHER_CLI_VERSION}/rancher /usr/local/bin/rancher \
   && chmod +x /usr/local/bin/rancher \
   && rm -r /tmp/rancher
+
+# Download and install Rancher Compose
+ENV RANCHER_COMPOSE_VERSION 0.12.5
+# The rancher tar.gz includes permissions data for the "current" folder, so don't extract to the root of /tmp since it will change the permissions :-(
+RUN mkdir /tmp/rancher-compose \
+  && wget -qO- https://github.com/rancher/rancher-compose/releases/download/v${RANCHER_COMPOSE_VERSION}/rancher-compose-linux-amd64-v${RANCHER_COMPOSE_VERSION}.tar.gz \
+  | tar xvz -C /tmp/rancher-compose \
+  && mv /tmp/rancher-compose/rancher-compose-v${RANCHER_COMPOSE_VERSION}/rancher-compose /usr/local/bin/rancher-compose \
+  && chmod +x /usr/local/bin/rancher-compose \
+  && rm -r /tmp/rancher-compose
 
 # Stay as root for custom entrypoint, which will then switch back to jenkins user
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
