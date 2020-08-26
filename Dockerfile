@@ -11,11 +11,9 @@ RUN echo 2.0 > /usr/share/jenkins/ref/jenkins.install.UpgradeWizard.state
 USER root
 
 # We need docker tools, make and ssl support for wget
-ENV DOCKER_COMPOSE_VERSION 1.23.2
-ENV PACKAGES "ca-certificates docker make openssl python py-pip"
-RUN apk add --no-cache --update $PACKAGES \
-  && pip install docker-compose==${DOCKER_COMPOSE_VERSION} \
-  && apk --purge -v del py-pip
+ENV DOCKER_COMPOSE_VERSION 1.25.4
+ENV PACKAGES "ca-certificates docker make openssl docker-compose~=${DOCKER_COMPOSE_VERSION}"
+RUN apk add --no-cache --update $PACKAGES
 
 # Download and install Rancher CLI
 ENV RANCHER_CLI_VERSION 0.6.13
